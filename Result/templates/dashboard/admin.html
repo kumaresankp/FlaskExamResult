@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Admin Dashboard</h1>
+    <hr>
+    <h2>Upload Marks</h2>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <label for="{{ form.semester.id }}" class="col-form-label">Semester:</label>
+        {{ form.semester(class_="form-control") }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.exam_type.id }}" class="col-form-label">Exam Type:</label>
+        {{ form.exam_type(class_="form-control") }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.marks_file.id }}" class="col-form-label">Marks File:</label>
+        <div class="custom-file">
+            {{ form.marks_file(class_="custom-file-input") }}
+            <label class="custom-file-label" for="{{ form.marks_file.id }}">Choose file</label>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form.submit(class_="btn btn-primary") }}
+    </div>
+</form>
+</div>
+
+<style type="text/css">
+/* Custom CSS for Admin Dashboard */
+/* Adjust margin and padding for body */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Center align container */
+.container {
+    margin-top: 100px;
+}
+
+/* Set maximum width for form elements */
+.form-group {
+    max-width: 400px;
+}
+
+/* Add margin between form elements */
+.form-group:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+/* Add margin between form label and form element */
+.form-group label {
+    margin-bottom: 5px;
+}
+
+/* Adjust custom file input label width */
+.custom-file-label::after {
+    width: 100%;
+}
+
+/* Adjust submit button margin */
+.form-group .btn {
+    margin-top: 10px;
+}
+
+/* Add custom margin and padding for file input field */
+.custom-file-input {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* Add custom styles for smaller screens */
+@media (max-width: 576px) {
+    /* Center align container */
+    .container {
+        margin-top: 50px;
+    }
+
+    /* Reduce margin between form elements */
+    .form-group:not(:last-child) {
+        margin-bottom: 10px;
+    }
+
+    /* Adjust custom file input label width */
+    .custom-file-label::after {
+        width: calc(100% - 28px);
+    }
+
+    /* Adjust submit button margin */
+    .form-group .btn {
+        margin-top: 5px;
+    }
+
+    /* Adjust custom margin and padding for file input field */
+    .custom-file-input {
+        margin-top: 5px;
+        padding: 5px;
+    }
+}
+
+</style>
+{% endblock %}
