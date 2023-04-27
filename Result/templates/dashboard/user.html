@@ -1,5 +1,62 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>User DashBoard</h1>
+<div class="container-fluid mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="bg-lightgreen rounded p-4">
+        <h5 class="text-center mb-4">Student Profile</h5>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <p class="font-weight-bold">Registered Number:</p>
+            <p class="mb-0">{{current_user.Regno}}</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <p class="font-weight-bold">Name:</p>
+            <p class="mb-0">{{current_user.name}}</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <p class="font-weight-bold">Institution:</p>
+            <p class="mb-0">8211-Kings College of Engineering</p>
+          </div>
+          <div class="col-md-6 mb-4">
+            <p class="font-weight-bold">Branch:</p>
+            <p class="mb-0">Department of Computer Science and Engineering</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .bg-lightgreen {
+    background-color: lightcyan;
+    }
+    
+    .font-weight-bold {
+    font-weight: bold;
+    }
+    
+    .mb-4 {
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+    }
+    
+    .mb-0 {
+    margin-bottom: 0;
+    }
+    
+    .rounded {
+    border-radius: 0.25rem;
+    }
+    
+    .p-4 {
+    padding: 1.5rem;
+    }
+    
+    h5 {
+    font-size: 1.5rem;
+    }
+    </style>
 {%endblock%}

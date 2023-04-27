@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect,request,send_file,flash
 from Result import app,db,bcrypt
 from Result.forms import AdminForm,MarksForm,RegistrationForm,LoginForm
-from Result.models import Marks,User
+from Result.models import Marks,User,Subject
 import pandas as pd
 from flask_login import login_user,current_user,logout_user,login_required
 
@@ -86,10 +86,19 @@ def upload():
 		flash('File Uploaded','success')
 		return redirect(url_for('adminDashboard'))
 
-
+@app.route("/user/publish")
+def publish():
+	subjects = Subject.query.filter_by(semester=3).all()
+	marks = Marks.query.filter_by(id=current_user.id).all()
+	return render_template('dashboard/publish.html',subjects=subjects,marks=marks)
 
 
 
 @app.route('/templates/sem-1-1')
 def files():
 	return "<h1> files is downloading</h1>"
+
+@app.route('/logout')
+def logout():
+	logout_user()
+	return render_template('home.html')
